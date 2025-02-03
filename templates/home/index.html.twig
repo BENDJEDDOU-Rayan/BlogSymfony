@@ -7,11 +7,8 @@
     {% endblock %}
 </head>
 <body>
-<div class="flex items-center justify-between p-2 bg-[#4B6587] text-white">
-    <div class="flex-1"></div>
-    <h1 class="text-center font-bold">{{ header_title }}</h1>
-    <button class="ml-auto px-3 py-2 text-[#333] font-bold bg-white rounded-md">CONNEXION</button>
-</div>
+{% include 'includes/header.html.twig' %}
+
 <div class="flex flex-col justify-center items-center mt-5 gap-y-5">
     <div class="flex flex-col justify-center items-center gap-y-1">
         <h2 class="text-3xl font-bold underline">Bienvenue sur mon blog personnel !</h2>
@@ -28,6 +25,15 @@
     {% else %}
         <p class="mt-2">..Rayan n'a rien posté !</p>
     {% endfor %}
+    <form action="{{ path('app_posts') }}" method="POST" class="flex flex-col gap-y-4 w-1/2 mx-auto mt-5 mb-5">
+        <label for="content" class="text-lg font-medium">Contenu du post :</label>
+        <textarea id="content" name="content" rows="5" class="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
+
+        <button type="submit" class="px-5 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600">
+            Publier
+        </button>
+    </form>
+
 </div>
 </body>
 </html>
