@@ -7,17 +7,27 @@
     {% endblock %}
 </head>
 <body>
-<div class="flex justify-between items-center bg-[#4B6587] text-white">
-    <h1 class="m-0 text-center flex-grow">{{ header_title }}</h1>
-    <button class="border-none px-3 py-2 text-[#333] font-bold rounded-md">CONNEXION</button>
+<div class="flex items-center justify-between p-2 bg-[#4B6587] text-white">
+    <div class="flex-1"></div>
+    <h1 class="text-center font-bold">{{ header_title }}</h1>
+    <button class="ml-auto px-3 py-2 text-[#333] font-bold bg-white rounded-md">CONNEXION</button>
 </div>
-<div class="flex flex-col justify-center items-center mt-5">
+<div class="flex flex-col justify-center items-center mt-5 gap-y-5">
     <div class="flex flex-col justify-center items-center gap-y-1">
         <h2 class="text-3xl font-bold underline">Bienvenue sur mon blog personnel !</h2>
         <p>Retrouvez tous les posts que je créer un peu tous les jours, sur tout et n'importe quoi !</p>
     </div>
-
+    {% for post in posts %}
+        <div class="flex flex-col w-128 mt-2 p-5 bg-white rounded-lg shadow-lg gap-y-5">
+            <p class=""> {{ post.content }}</p>
+            <div class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-160 0q-17 0-28.5-11.5T280-440q0-17 11.5-28.5T320-480q17 0 28.5 11.5T360-440q0 17-11.5 28.5T320-400Zm320 0q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-160 0q-17 0-28.5-11.5T280-280q0-17 11.5-28.5T320-320q17 0 28.5 11.5T360-280q0 17-11.5 28.5T320-240Zm320 0q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z"/></svg>
+                <p class="text-sm">{{ post.postAt|date('d/m/Y') }}</p>
+            </div>
+        </div>
+    {% else %}
+        <p class="mt-2">..Rayan n'a rien posté !</p>
+    {% endfor %}
 </div>
-
 </body>
 </html>
