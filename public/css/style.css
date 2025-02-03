@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F7F6F2;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #4B6587;
+    color: white;
+}
+
+.header h1 {
+    margin: 0;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.header button {
+    border: none;
+    padding: 8px 12px;
+    color: #333;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
