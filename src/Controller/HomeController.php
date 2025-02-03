@@ -12,7 +12,7 @@ final class HomeController extends AbstractController
     public function index(): Response
     {
         return $this->render('home/index.html.twig', [
-            'header_title' => 'Bienvenue sur le blog de Rayan !',
+            'header_title' => 'Blog de Rayan',
         ]);
     }
 }

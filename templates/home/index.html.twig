@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bienvenue sur la page principale !</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <title>Blog de Rayan BENDJEDDOU</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
 </head>
 <body>
-<div class="header">
-    <h1>{{ header_title }}</h1>
-    <button>CONNEXION</button>
+<div class="flex justify-between items-center bg-[#4B6587] text-white">
+    <h1 class="m-0 text-center flex-grow">{{ header_title }}</h1>
+    <button class="border-none px-3 py-2 text-[#333] font-bold rounded-md">CONNEXION</button>
 </div>
-<div class="content-container">
-    <h2>Consulter tous mes blabla</h2>
+<div class="flex flex-col justify-center items-center mt-5">
+    <div class="flex flex-col justify-center items-center gap-y-1">
+        <h2 class="text-3xl font-bold underline">Bienvenue sur mon blog personnel !</h2>
+        <p>Retrouvez tous les posts que je créer un peu tous les jours, sur tout et n'importe quoi !</p>
+    </div>
+
 </div>
 
 </body>
