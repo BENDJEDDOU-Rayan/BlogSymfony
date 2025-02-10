@@ -6,38 +6,42 @@
 {% include 'includes/header.html.twig' with {'header_title': 'Blog de Rayan'} %}
 
 <div class="flex justify-center items-center p-5">
-    <form method="post" class="bg-white flex flex-col gap-y-5 justify-center items-center p-5 rounded-lg shadow-lg" style="width: fit-content;">
+    <form method="post" class="bg-white flex flex-col gap-y-4 justify-center items-center p-5 rounded-lg shadow-lg" style="width: fit-content;">
         {% if error %}
             <div class="alert alert-danger"><p class="text-red-500">{{ error.messageKey|trans(error.messageData, 'security') }}</p></div>
         {% endif %}
 
         {% if app.user %}
-            <div class="mb-3 flex flex-col justify-center items-center">
-                <p class="text-green-500">Vous êtes connecté(e) avec le compte {{ app.user.userIdentifier }}</p> <a href="{{ path('app_logout') }}">Logout</a>
+            <div class="mb-3 flex flex-col justify-center items-center gap-y-4">
+                <p class="text-green-500">Vous êtes connecté(e) avec le compte {{ app.user.userIdentifier }}</p> <a href="{{ path('app_logout') }}" class="text-red-500">Déconnexion</a>
             </div>
+        {% else %}
+            <div class="flex flex-row items-center" style="column-gap: 10px;">
+                <label for="inputEmail">Email : </label>
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control border border-grey-500" autocomplete="email" required autofocus>
+            </div>
+            <div class="flex items-center" style="column-gap: 10px;">
+                <label for="inputPassword">Mot de passe : </label>
+                <input type="password" name="password" id="inputPassword" class="form-control border border-grey-500" autocomplete="current-password" required>
+            </div>
+
+            <input type="hidden" name="_csrf_token"
+                   value="{{ csrf_token('authenticate') }}"
+            >
+
+            <div class="checkbox mb-3 flex items-center">
+                <label>
+                    <input type="checkbox" name="_remember_me"> Se souvenir de moi
+                </label>
+            </div>
+
+            <button class="btn btn-lg btn-primary border border-gray-500 p-2 cursor-pointer" type="submit">
+                Sign in
+            </button>
+            <a href="{{ path('app_register') }}" class="p-2 border border-gray-500 cursor-pointer">
+                S'inscrire
+            </a>
         {% endif %}
-        <div class="flex flex-row items-center" style="column-gap: 10px;">
-            <label for="inputEmail">Email : </label>
-            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control border border-grey-500" autocomplete="email" required autofocus>
-        </div>
-        <div class="flex items-center" style="column-gap: 10px;">
-            <label for="inputPassword">Mot de passe : </label>
-            <input type="password" name="password" id="inputPassword" class="form-control border border-grey-500" autocomplete="current-password" required>
-        </div>
-
-        <input type="hidden" name="_csrf_token"
-               value="{{ csrf_token('authenticate') }}"
-        >
-
-        <div class="checkbox mb-3 flex items-center">
-            <label>
-                <input type="checkbox" name="_remember_me"> Se souvenir de moi
-            </label>
-        </div>
-
-        <button class="btn btn-lg btn-primary" type="submit">
-            Sign in
-        </button>
     </form>
 
 </div>
